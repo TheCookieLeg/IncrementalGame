@@ -9,6 +9,8 @@ public class Main {
                 frame = new GameFrame();
                 frame.setVisible(true);
                 //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+
             }
         });
     }
