@@ -1,9 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameFrame extends JFrame {
 
-
+    private JLabel moneyLabel;
+    private JLabel moneyPerSecondLabel;
+    private JButton clickButton;
 
     public GameFrame() {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -54,7 +58,7 @@ public class GameFrame extends JFrame {
         clickerPanel.add(blankLabel);
 
         // Money text
-        JLabel moneyLabel = new JLabel("Money here!");
+        moneyLabel = new JLabel("Money here!");
         moneyLabel.setForeground(Color.WHITE);
         moneyLabel.setMaximumSize(new Dimension(800, 100));
         moneyLabel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
@@ -64,7 +68,7 @@ public class GameFrame extends JFrame {
         clickerPanel.add(moneyLabel, boxLayout);
 
         // Money per second text
-        JLabel moneyPerSecondLabel = new JLabel("Money per second!");
+        moneyPerSecondLabel = new JLabel("Money per second!");
         moneyPerSecondLabel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         moneyPerSecondLabel.setForeground(Color.WHITE);
         moneyPerSecondLabel.setMaximumSize(new Dimension(600, 100));
@@ -74,7 +78,7 @@ public class GameFrame extends JFrame {
         clickerPanel.add(moneyPerSecondLabel, boxLayout);
 
         // Clicker button
-        JButton clickButton = new JButton("Click Me");
+        clickButton = Main.getClickerButton();
         clickButton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         clickButton.setBackground(Color.DARK_GRAY);
         clickButton.setForeground(Color.WHITE);
@@ -96,8 +100,19 @@ public class GameFrame extends JFrame {
 
         mainPanel.add(extraPanel, BorderLayout.EAST);
 
+        Main.getClickerButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Clicker button clicked");
+            }
+        });
 
-        pack();
+
+        this.pack();
     }
 
+    public void refreshUI()
+    {
+        moneyLabel.setText("MONEY UPDATE");
+        moneyPerSecondLabel.setText("MONEY PER SECOND UPDATE");
+    }
 }
