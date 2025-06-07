@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class GameFrame extends JFrame {
 
+    public static JFrame frame;
     private JLabel moneyLabel;
     private JLabel moneyPerSecondLabel;
     private JButton clickButton;
@@ -12,7 +13,6 @@ public class GameFrame extends JFrame {
     public GameFrame() {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(1280, 720));
-
 
         //Main Panel
         JPanel mainPanel = new JPanel();
@@ -53,41 +53,37 @@ public class GameFrame extends JFrame {
         // Blank space
         JLabel blankLabel = new JLabel("");
         blankLabel.setBackground(Color.DARK_GRAY);
-        blankLabel.setBorder(BorderFactory.createLineBorder(Color.RED));
         blankLabel.setMaximumSize(new Dimension(100, 150));
         clickerPanel.add(blankLabel);
 
         // Money text
-        moneyLabel = new JLabel("Money here!");
+        moneyLabel = Main.getMoneyLabel();
         moneyLabel.setForeground(Color.WHITE);
         moneyLabel.setMaximumSize(new Dimension(800, 100));
-        moneyLabel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        moneyLabel.setFont(new Font("", Font.BOLD, 20));
+        moneyLabel.setFont(new Font("", Font.BOLD, 40));
         moneyLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
         clickerPanel.add(moneyLabel, boxLayout);
 
         // Money per second text
-        moneyPerSecondLabel = new JLabel("Money per second!");
-        moneyPerSecondLabel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        moneyPerSecondLabel = Main.getMoneyPerSecondLabel();
         moneyPerSecondLabel.setForeground(Color.WHITE);
         moneyPerSecondLabel.setMaximumSize(new Dimension(600, 100));
-        moneyPerSecondLabel.setFont(new Font("", Font.BOLD, 14));
+        moneyPerSecondLabel.setFont(new Font("", Font.BOLD, 20));
         moneyPerSecondLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         moneyPerSecondLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
         clickerPanel.add(moneyPerSecondLabel, boxLayout);
 
         // Clicker button
         clickButton = Main.getClickerButton();
-        clickButton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         clickButton.setBackground(Color.DARK_GRAY);
         clickButton.setForeground(Color.WHITE);
         clickButton.setFont(new Font("", Font.BOLD, 20));
         clickButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         clickButton.setMaximumSize(new Dimension(160, 80));
         clickerPanel.add(clickButton, boxLayout);
-
-
 
         mainPanel.add(clickerPanel, BorderLayout.CENTER);
 
