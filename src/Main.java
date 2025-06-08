@@ -10,7 +10,6 @@ public class Main {
     private static JLabel moneyPerSecondLabel = new JLabel("0,-/s");
     private static JButton clickerButton = new JButton("Click Me");
 
-
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -24,8 +23,7 @@ public class Main {
 
         clickerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                m++;
-                moneyLabel.setText(m + ",-");
+                Incremental.addMoney(1);
             }
         });
     }

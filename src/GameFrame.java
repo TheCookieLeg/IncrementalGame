@@ -78,7 +78,7 @@ public class GameFrame extends JFrame {
 
         // Clicker button
         clickButton = Main.getClickerButton();
-        clickButton.setBackground(Color.DARK_GRAY);
+        clickButton.setBackground(Color.LIGHT_GRAY);
         clickButton.setForeground(Color.WHITE);
         clickButton.setFont(new Font("", Font.BOLD, 20));
         clickButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -95,13 +95,6 @@ public class GameFrame extends JFrame {
 
 
         mainPanel.add(extraPanel, BorderLayout.EAST);
-
-        Main.getClickerButton().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Clicker button clicked");
-            }
-        });
-
 
         this.pack();
     }
