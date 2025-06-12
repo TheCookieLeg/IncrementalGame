@@ -38,6 +38,7 @@ public class GameFrame extends JFrame {
         upgradesLabel.setForeground(Color.WHITE);
         upgradesLabel.setFont(new Font("", Font.BOLD, 20));
         upgradesPanel.add(upgradesLabel);
+        upgradesPanel.add(Main.upgrade.getUpgradeButton());
         mainPanel.add(upgradesPanel, BorderLayout.WEST);
 
         // Clicker Panel
@@ -92,7 +93,6 @@ public class GameFrame extends JFrame {
         JPanel extraPanel = new JPanel();
         extraPanel.setBackground(Color.DARK_GRAY);
         extraPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-
 
         mainPanel.add(extraPanel, BorderLayout.EAST);
 

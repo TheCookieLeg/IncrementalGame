@@ -13,8 +13,11 @@ public class Upgrade {
         this.nameOfUpgrade = nameOfUpgrade;
         this.amountPerUpgrade = amountPerUpgrade;
         this.costPerUpgrade = costPerUpgrade;
+        upgradeButton = new JButton(String.valueOf(costPerUpgrade));
     }
 
-    private JButton getUpgradeButton() {return upgradeButton;}
-    
+    public JButton getUpgradeButton() {return upgradeButton;}
+
+    public double getCostPerUpgrade() {return costPerUpgrade;}
+    public double getAmountPerUpgrade() {return amountPerUpgrade;}
 }

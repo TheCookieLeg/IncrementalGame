@@ -10,6 +10,8 @@ public class Main {
     private static JLabel moneyPerSecondLabel = new JLabel("0,-/s");
     private static JButton clickerButton = new JButton("Click Me");
 
+    public static Upgrade upgrade;
+
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -21,11 +23,28 @@ public class Main {
             }
         });
 
-        clickerButton.addActionListener(new ActionListener() {
+
+        upgrade = new Upgrade("Clicker", 0.1, 10);
+
+        upgrade.getUpgradeButton().addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
+                if (Incremental.spendMoney(upgrade.getCostPerUpgrade())){
+                    Incremental.addIncremental(upgrade.getAmountPerUpgrade());
+                }
+
+            }
+        });
+
+        clickerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
                 Incremental.addMoney(1);
             }
         });
+
+        Thread moneyThread = new Incremental();
+        moneyThread.start();
     }
 
 
