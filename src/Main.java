@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -13,6 +14,16 @@ public class Main {
     public static Upgrade upgrade;
 
     public static void main(String[] args) {
+
+        clickerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Incremental.addMoney(1);
+            }
+        });
+
+        upgradeButtons.add(new Upgrade("Clicker", 10, 1));
+
+        
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 frame = new GameFrame();
