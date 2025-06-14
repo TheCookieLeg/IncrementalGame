@@ -12,6 +12,7 @@ public class Main {
     private static JButton clickerButton = new JButton("Click Me");
 
     public static Upgrade upgrade;
+    public static ArrayList<Upgrade> upgradeButtons = new ArrayList<Upgrade>();
 
     public static void main(String[] args) {
 
@@ -47,12 +48,6 @@ public class Main {
             }
         });
 
-        clickerButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
-                Incremental.addMoney(1);
-            }
-        });
 
         Thread moneyThread = new Incremental();
         moneyThread.start();
@@ -65,7 +60,7 @@ public class Main {
     public static JButton getClickerButton() {return clickerButton;}
 
     // Setters
-    public static void setMoneyLabel(double d) {moneyLabel.setText(d + ",-");}
+    public static void setMoneyLabel(String s) {moneyLabel.setText(s + ",-");}
     public static void setMoneyPerSecondLabel(double d) {moneyPerSecondLabel.setText(d + ",-/s");}
 
 }

@@ -1,17 +1,26 @@
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 public class Incremental extends Thread {
     private static double money = 0.0;
     private static double moneyPerSecond = 0.0;
 
+    static DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
+    static DecimalFormat df = new DecimalFormat("0.00", symbols);
+
     public static void addMoney(double d) {
         money += d;
         money = Math.round(money*100.0) / 100.0;
-        Main.setMoneyLabel(money);
+
+        Main.setMoneyLabel(df.format(money));
+
     }
 
     public static boolean spendMoney(double cost) {
         if (cost <= money) {
             money -= cost;
-            Main.setMoneyLabel(money);
+            Main.setMoneyLabel(df.format(money));
             return true;
         } else {
             return false;
