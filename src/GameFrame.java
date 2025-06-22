@@ -38,7 +38,13 @@ public class GameFrame extends JFrame {
         upgradesLabel.setForeground(Color.WHITE);
         upgradesLabel.setFont(new Font("", Font.BOLD, 20));
         upgradesPanel.add(upgradesLabel);
-        upgradesPanel.add(Main.upgrade.getUpgradeButton());
+
+        for (int i = 0; i < Main.upgradeButtons.size(); i++)
+        {
+            upgradesPanel.add(Main.upgradeButtons.get(i).getUpgradeButton());
+        }
+
+
         mainPanel.add(upgradesPanel, BorderLayout.WEST);
 
         // Clicker Panel

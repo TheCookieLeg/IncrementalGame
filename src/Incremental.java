@@ -35,6 +35,8 @@ public class Incremental extends Thread {
 
     @Override
     public void run() {
+        // Adds money per second, but does it every 100 miliseconds instead of every second, to make it seem quicker
+        // This is why the moneyPerSecond is divided by 10
         while (true) {
             addMoney(moneyPerSecond / 10);
             try {

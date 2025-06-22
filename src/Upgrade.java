@@ -15,7 +15,7 @@ public class Upgrade {
     }
 
     public JButton getUpgradeButton() {return upgradeButton;}
-
+    public String getNameOfUpgrade() {return nameOfUpgrade;}
     public double getCostPerUpgrade() {return costPerUpgrade;}
     public double getAmountPerUpgrade() {return amountPerUpgrade;}
 }

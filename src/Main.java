@@ -22,7 +22,6 @@ public class Main {
             }
         });
 
-        upgradeButtons.add(new Upgrade("Clicker", 10, 1));
 
         
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -36,17 +35,24 @@ public class Main {
         });
 
 
-        upgrade = new Upgrade("Clicker", 0.1, 10);
 
-        upgrade.getUpgradeButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (Incremental.spendMoney(upgrade.getCostPerUpgrade())){
-                    Incremental.addIncremental(upgrade.getAmountPerUpgrade());
+
+        upgradeButtons.add(new Upgrade("Clicker", 0.1, 10));
+        upgradeButtons.add(new Upgrade("Second clicker", 1, 20));
+
+
+
+        for (int j = 0; j < upgradeButtons.size(); j++)
+        {
+            int index = j;
+            upgradeButtons.get(index).getUpgradeButton().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                        Incremental.addIncremental(upgradeButtons.get(index).getAmountPerUpgrade());
                 }
+            });
+        }
 
-            }
-        });
 
 
         Thread moneyThread = new Incremental();
