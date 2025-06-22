@@ -32,20 +32,35 @@ public class GameFrame extends JFrame {
 
         // Upgrades panel
         JPanel upgradesPanel = new JPanel();
+        upgradesPanel.setLayout(new BoxLayout(upgradesPanel, BoxLayout.Y_AXIS));
         upgradesPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         upgradesPanel.setBackground(Color.DARK_GRAY);
-        JLabel upgradesLabel = new JLabel("Upgrades go here");
-        upgradesLabel.setForeground(Color.WHITE);
-        upgradesLabel.setFont(new Font("", Font.BOLD, 20));
-        upgradesPanel.add(upgradesLabel);
+
+        //JLabel upgradesLabel = new JLabel("Upgrades go here");
+        //upgradesLabel.setForeground(Color.WHITE);
+        //upgradesLabel.setFont(new Font("", Font.BOLD, 20));
+        //upgradesPanel.add(upgradesLabel);
+
 
         for (int i = 0; i < Main.upgradeButtons.size(); i++)
         {
-            upgradesPanel.add(Main.upgradeButtons.get(i).getUpgradeButton());
+            JPanel upgradeOnePanel = new JPanel();
+
+            upgradeOnePanel.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 5));
+            upgradeOnePanel.setBackground(Color.LIGHT_GRAY);
+            upgradeOnePanel.setLayout(new BoxLayout(upgradeOnePanel, BoxLayout.X_AXIS));
+            upgradeOnePanel.add(new JLabel(Main.upgradeButtons.get(i).getNameOfUpgrade()));
+            upgradeOnePanel.add(Box.createHorizontalStrut(10));
+            upgradeOnePanel.add(new JLabel(Double.toString(Main.upgradeButtons.get(i).getAmountPerUpgrade())));
+            upgradeOnePanel.add(Box.createHorizontalStrut(10));
+            upgradeOnePanel.add(Main.upgradeButtons.get(i).getUpgradeButton());
+            upgradeOnePanel.setMaximumSize(upgradeOnePanel.getPreferredSize());
+            upgradesPanel.add(upgradeOnePanel);
         }
 
 
         mainPanel.add(upgradesPanel, BorderLayout.WEST);
+
 
         // Clicker Panel
         JPanel clickerPanel = new JPanel();

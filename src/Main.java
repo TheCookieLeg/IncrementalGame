@@ -1,9 +1,13 @@
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Main {
+
 
     public static JFrame frame;
     private static double m = 0;
@@ -38,7 +42,7 @@ public class Main {
 
 
         upgradeButtons.add(new Upgrade("Clicker", 0.1, 10));
-        upgradeButtons.add(new Upgrade("Second clicker", 1, 20));
+        upgradeButtons.add(new Upgrade("Assembly line", 1, 100));
 
 
 
@@ -48,7 +52,11 @@ public class Main {
             upgradeButtons.get(index).getUpgradeButton().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    if (Incremental.spendMoney(upgradeButtons.get(index).getCostPerUpgrade())) {
                         Incremental.addIncremental(upgradeButtons.get(index).getAmountPerUpgrade());
+                        upgradeButtons.get(index).increaseCost();
+                        upgradeButtons.get(index).setUpgradeButtonText(upgradeButtons.get(index).getCostPerUpgrade());
+                    }
                 }
             });
         }
