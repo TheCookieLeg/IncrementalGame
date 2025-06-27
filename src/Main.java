@@ -43,6 +43,7 @@ public class Main {
 
         upgradeButtons.add(new Upgrade("Clicker", 0.1, 10));
         upgradeButtons.add(new Upgrade("Assembly line", 1, 100));
+        upgradeButtons.add(new Upgrade("Turbo clicker", 10, 1000));
 
 
 
