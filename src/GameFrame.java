@@ -105,6 +105,7 @@ public class GameFrame extends JFrame {
         clickButton.setFont(new Font("", Font.BOLD, 20));
         clickButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         clickButton.setMaximumSize(new Dimension(160, 80));
+        clickButton.setText(Double.toString(Incremental.getMoneyPerClick()));
         clickerPanel.add(clickButton, boxLayout);
 
         mainPanel.add(clickerPanel, BorderLayout.CENTER);

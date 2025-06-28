@@ -22,7 +22,7 @@ public class Main {
 
         clickerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Incremental.addMoney(1);
+                Incremental.addClickMoney();
             }
         });
 
@@ -39,15 +39,25 @@ public class Main {
         });
 
 
+        upgradeButtons.add(new Upgrade("Clicker", 1, 10));
+        upgradeButtons.add(new Upgrade("Manual labor", 0.5, 20));
+        upgradeButtons.add(new Upgrade("Assembly lines", 5, 100));
+        upgradeButtons.add(new Upgrade("Assembly robots", 50, 1000));
+        upgradeButtons.add(new Upgrade("Quantum computing", 500, 10000));
+        upgradeButtons.add(new Upgrade("Artifical Intelligence", 5000, 100000));
+        upgradeButtons.add(new Upgrade("Cookies as encouragement", 100000, 1000000));
 
+        upgradeButtons.get(0).getUpgradeButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (Incremental.spendMoney(upgradeButtons.get(0).getCostPerUpgrade())) {
+                    Incremental.addMoneyPerClick(1);
+                    upgradeButtons.get(0).increaseCost();
+                    upgradeButtons.get(0).setUpgradeButtonText(upgradeButtons.get(0).getCostPerUpgrade());
+                }
+            }
+        });
 
-        upgradeButtons.add(new Upgrade("Clicker", 0.1, 10));
-        upgradeButtons.add(new Upgrade("Assembly line", 1, 100));
-        upgradeButtons.add(new Upgrade("Turbo clicker", 10, 1000));
-
-
-
-        for (int j = 0; j < upgradeButtons.size(); j++)
+        for (int j = 1; j < upgradeButtons.size(); j++)
         {
             int index = j;
             upgradeButtons.get(index).getUpgradeButton().addActionListener(new ActionListener() {
@@ -61,8 +71,6 @@ public class Main {
                 }
             });
         }
-
-
 
         Thread moneyThread = new Incremental();
         moneyThread.start();
